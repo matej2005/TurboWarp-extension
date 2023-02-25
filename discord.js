@@ -37,15 +37,11 @@
           {
             opcode: 'send_json_block',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'send json [JSON_DATA] as [USERNAME] webhook url: [WEBHOOK_URL]',
+            text: 'send json [JSON_DATA] webhook url: [WEBHOOK_URL]',
             arguments: {
               JSON_DATA: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '{"content": "Text send from TurboWarp!","embeds": null,"attachments": []}'
-              },
-              USERNAME:{
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'TurboWarp Bot'
               },
               WEBHOOK_URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -75,7 +71,7 @@
       }
     catch(err) {}
     }
-    send_json_block({JSON_DATA,USERNAME,WEBHOOK_URL}){
+    send_json_block({JSON_DATA,WEBHOOK_URL}){
       try {return fetch(WEBHOOK_URL, {
             method: "POST",
             headers: {
@@ -91,3 +87,4 @@
 }
   Scratch.extensions.register(new Discord());
 })(Scratch);
+
